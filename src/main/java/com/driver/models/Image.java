@@ -5,22 +5,25 @@ import javax.persistence.*;
 @Entity
 @Table
 public class Image {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String description;
 
     private String dimensions;
+
     @ManyToOne
     @JoinColumn
     private Blog blog;
 
-    public Blog getBlog() {
-        return blog;
+    public Image() {
     }
 
-    public void setBlog(Blog blog) {
-        this.blog = blog;
+    public Image(String description, String dimensions) {
+        this.description = description;
+        this.dimensions = dimensions;
     }
 
     public Integer getId() {
@@ -45,5 +48,13 @@ public class Image {
 
     public void setDimensions(String dimensions) {
         this.dimensions = dimensions;
+    }
+
+    public Blog getBlog() {
+        return blog;
+    }
+
+    public void setBlog(Blog blog) {
+        this.blog = blog;
     }
 }
